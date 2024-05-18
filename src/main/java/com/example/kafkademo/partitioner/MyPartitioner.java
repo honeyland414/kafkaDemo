@@ -12,7 +12,7 @@ public class MyPartitioner implements Partitioner {
     public int partition(String s, Object o, byte[] bytes, Object o1, byte[] bytes1, Cluster cluster) {
         int partition;
         String val = o1.toString();
-        if (val.equals("hello")) {
+        if (val.contains("hello")) {
             partition = 0;
         } else {
             partition = 1;
