@@ -24,7 +24,7 @@ public class ProducerTest {
 
     @Test
     public void testSend() {
-        String value = "hell: " + new Date(System.currentTimeMillis());
+        String value = "hello: " + new Date(System.currentTimeMillis());
 //        kafkaProducer.send(new ProducerRecord<>("first", value));
 
         try {
