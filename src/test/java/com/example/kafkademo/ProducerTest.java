@@ -27,8 +27,8 @@ public class ProducerTest {
 //        kafkaProducer.send(new ProducerRecord<>("first", value));
 
         try {
-            for (int i = 0; i < 1; i++) {
-                User user = new User(i, "tom" + i, 22 + 1);
+            for (int i = 0; i < 3; i++) {
+                User user = new User(i, "tom" + i, 22 + i);
 
                 kafkaProducer.send(new ProducerRecord<>("demo", user), (recordMetadata, e) -> {
                     if(e == null) {
@@ -37,7 +37,7 @@ public class ProducerTest {
                         e.printStackTrace();
                     }
                 });
-                Thread.sleep(1000);
+                //Thread.sleep(100);
             }
 
         } catch (Exception e) {

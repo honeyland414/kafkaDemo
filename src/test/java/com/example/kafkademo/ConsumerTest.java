@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -32,12 +33,19 @@ public class ConsumerTest {
 //        kafkaConsumer.assign(topicPartitions);
 
         while (true) {
-            ConsumerRecords<String, User> records = kafkaConsumer.poll(Duration.ofSeconds(1));
-            for (ConsumerRecord<String, User> record : records) {
-                System.out.println(records.partitions());
-                System.err.println(record.headers());
+            ConsumerRecords<String, User> records = kafkaConsumer.poll(Duration.ofSeconds(2));
 
+
+            Set<TopicPartition> partitions = records.partitions();
+            for (TopicPartition partition : partitions) {
+                System.err.println(records.records(partition));
             }
+
+            System.out.println("**************************************");
+//            for (ConsumerRecord<String, User> record : records) {
+//                System.err.println(record);
+//            }
+
         }
     }
 
